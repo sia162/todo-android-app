@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { StyleSheet, View, FlatList } from "react-native";
 import Header from "./components/Header";
+import TodoForm from "./components/TodoForm";
 import TodoItem from "./components/TodoItem";
 
 export default function App() {
@@ -17,22 +18,30 @@ export default function App() {
     });
   };
 
+  const addtodohandler = (text) => {
+    setTodos([...todos, { text: text, key: Math.random().toString() }]);
+  };
+
   return (
     <View style={styles.container}>
       {/* header */}
       <Header />
       <View style={styles.content}>
-        {/* to-do form */}
-
         <View style={styles.list}>
           {/* list */}
           <FlatList
             data={todos}
             renderItem={({ item }) => (
-              <TodoItem item={item} pressHandler={pressHandler} />
+              <TodoItem
+                item={item}
+                pressHandler={pressHandler}
+                addtodohandler
+              />
             )}
           />
         </View>
+        {/* to-do form */}
+        <TodoForm addtodohandler={addtodohandler} />
       </View>
       <StatusBar style="auto" />
     </View>

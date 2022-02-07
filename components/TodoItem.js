@@ -20,5 +20,6 @@ const styles = StyleSheet.create({
     borderStyle: "dashed",
     borderRadius: 10,
     fontSize: 15,
+    backgroundColor: "#EEEEEE",
   },
 });
