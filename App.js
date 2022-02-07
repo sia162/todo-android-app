@@ -1,6 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { StyleSheet, View, FlatList } from "react-native";
+import {
+  StyleSheet,
+  View,
+  FlatList,
+  Alert,
+  Keyboard,
+  TouchableWithoutFeedback,
+} from "react-native";
 import Header from "./components/Header";
 import TodoForm from "./components/TodoForm";
 import TodoItem from "./components/TodoItem";
@@ -19,32 +26,45 @@ export default function App() {
   };
 
   const addtodohandler = (text) => {
-    setTodos([...todos, { text: text, key: Math.random().toString() }]);
+    if (text.length > 3)
+      setTodos([...todos, { text: text, key: Math.random().toString() }]);
+    else {
+      Alert.alert("OOPS!", "todos must be over 3 char long.", [
+        { text: "understood", onPress: () => console.log("alert closed") },
+      ]);
+    }
   };
 
   return (
-    <View style={styles.container}>
-      {/* header */}
-      <Header />
-      <View style={styles.content}>
-        <View style={styles.list}>
-          {/* list */}
-          <FlatList
-            data={todos}
-            renderItem={({ item }) => (
-              <TodoItem
-                item={item}
-                pressHandler={pressHandler}
-                addtodohandler
-              />
-            )}
-          />
+    <TouchableWithoutFeedback
+      onPress={() => {
+        Keyboard.dismiss();
+        // console.log("dismiss keyboard");
+      }}
+    >
+      <View style={styles.container}>
+        {/* header */}
+        <Header />
+        <View style={styles.content}>
+          {/* to-do form */}
+          <TodoForm addtodohandler={addtodohandler} />
+          <View style={styles.list}>
+            {/* list */}
+            <FlatList
+              data={todos}
+              renderItem={({ item }) => (
+                <TodoItem
+                  item={item}
+                  pressHandler={pressHandler}
+                  addtodohandler
+                />
+              )}
+            />
+          </View>
         </View>
-        {/* to-do form */}
-        <TodoForm addtodohandler={addtodohandler} />
+        <StatusBar style="auto" />
       </View>
-      <StatusBar style="auto" />
-    </View>
+    </TouchableWithoutFeedback>
   );
 }
 
