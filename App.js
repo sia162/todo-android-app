@@ -9,7 +9,7 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import Header from "./components/Header";
-import Sandox from "./components/Sandox";
+// import Sandox from "./components/Sandox";
 import TodoForm from "./components/TodoForm";
 import TodoItem from "./components/TodoItem";
 
@@ -83,9 +83,5 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 20,
     padding: 10,
-    borderWidth: 2,
-    backgroundColor: "#041562",
-    borderColor: "#11468F",
-    borderRadius: 20,
   },
 });
