@@ -9,6 +9,7 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import Header from "./components/Header";
+import Sandox from "./components/Sandox";
 import TodoForm from "./components/TodoForm";
 import TodoItem from "./components/TodoItem";
 
@@ -36,35 +37,36 @@ export default function App() {
   };
 
   return (
-    <TouchableWithoutFeedback
-      onPress={() => {
-        Keyboard.dismiss();
-        // console.log("dismiss keyboard");
-      }}
-    >
-      <View style={styles.container}>
-        {/* header */}
-        <Header />
-        <View style={styles.content}>
-          {/* to-do form */}
-          <TodoForm addtodohandler={addtodohandler} />
-          <View style={styles.list}>
-            {/* list */}
-            <FlatList
-              data={todos}
-              renderItem={({ item }) => (
-                <TodoItem
-                  item={item}
-                  pressHandler={pressHandler}
-                  addtodohandler
-                />
-              )}
-            />
-          </View>
-        </View>
-        <StatusBar style="auto" />
-      </View>
-    </TouchableWithoutFeedback>
+    <Sandox />
+    // <TouchableWithoutFeedback
+    //   onPress={() => {
+    //     Keyboard.dismiss();
+    //     // console.log("dismiss keyboard");
+    //   }}
+    // >
+    //   <View style={styles.container}>
+    //     {/* header */}
+    //     <Header />
+    //     <View style={styles.content}>
+    //       {/* to-do form */}
+    //       <TodoForm addtodohandler={addtodohandler} />
+    //       <View style={styles.list}>
+    //         {/* list */}
+    //         <FlatList
+    //           data={todos}
+    //           renderItem={({ item }) => (
+    //             <TodoItem
+    //               item={item}
+    //               pressHandler={pressHandler}
+    //               addtodohandler
+    //             />
+    //           )}
+    //         />
+    //       </View>
+    //     </View>
+    //     <StatusBar style="auto" />
+    //   </View>
+    // </TouchableWithoutFeedback>
   );
 }
 
