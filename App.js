@@ -37,36 +37,36 @@ export default function App() {
   };
 
   return (
-    <Sandox />
-    // <TouchableWithoutFeedback
-    //   onPress={() => {
-    //     Keyboard.dismiss();
-    //     // console.log("dismiss keyboard");
-    //   }}
-    // >
-    //   <View style={styles.container}>
-    //     {/* header */}
-    //     <Header />
-    //     <View style={styles.content}>
-    //       {/* to-do form */}
-    //       <TodoForm addtodohandler={addtodohandler} />
-    //       <View style={styles.list}>
-    //         {/* list */}
-    //         <FlatList
-    //           data={todos}
-    //           renderItem={({ item }) => (
-    //             <TodoItem
-    //               item={item}
-    //               pressHandler={pressHandler}
-    //               addtodohandler
-    //             />
-    //           )}
-    //         />
-    //       </View>
-    //     </View>
-    //     <StatusBar style="auto" />
-    //   </View>
-    // </TouchableWithoutFeedback>
+    // <Sandox />
+    <TouchableWithoutFeedback
+      onPress={() => {
+        Keyboard.dismiss();
+        // console.log("dismiss keyboard");
+      }}
+    >
+      <View style={styles.container}>
+        {/* header */}
+        <Header />
+        <View style={styles.content}>
+          {/* to-do form */}
+          <TodoForm addtodohandler={addtodohandler} />
+          <View style={styles.list}>
+            {/* list */}
+            <FlatList
+              data={todos}
+              renderItem={({ item }) => (
+                <TodoItem
+                  item={item}
+                  pressHandler={pressHandler}
+                  addtodohandler
+                />
+              )}
+            />
+          </View>
+        </View>
+        <StatusBar style="auto" />
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 
@@ -76,9 +76,16 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   content: {
+    flex: 1,
     padding: 40,
   },
   list: {
+    flex: 1,
     marginTop: 20,
+    padding: 10,
+    borderWidth: 2,
+    backgroundColor: "#041562",
+    borderColor: "#11468F",
+    borderRadius: 20,
   },
 });

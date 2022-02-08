@@ -6,6 +6,7 @@ const TodoForm = ({ addtodohandler }) => {
 
   const changeHandler = (val) => {
     setTodotext(val);
+    // setTodotext("");
   };
 
   return (
